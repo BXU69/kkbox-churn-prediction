@@ -4,7 +4,7 @@ An ongoing portfolio project exploring customer churn through SQL, Python, predi
 
 ## Current Progress
 
-Completed label and member data audits, transaction version comparisons, candidate transaction feature engineering, and an initial logistic regression benchmark with an availability-only comparison. Temporal validation, additional models, and retention experiment design are planned.
+Completed data audits, transaction feature engineering, historical label reconstruction, and an initial historical-cohort comparison of Logistic Regression, XGBoost, and LightGBM. Hyperparameter tuning, behavioral features, retention experiment design, and sequence modeling are planned.
 
 ### Initial Findings
 
@@ -121,6 +121,22 @@ The full model reduces Log Loss by approximately 29.6% relative to the historica
 This is a retrospective historical cohort evaluation. Reconstructed training labels and official validation labels have different provenance. Exact label parity, validation label-generation parameters, and point-in-time source snapshots have not been independently verified. This is not an untouched independent test.
 
 See [the evaluation notebook](notebooks/06_temporal_validation.ipynb), [model comparison](reports/temporal_model_comparison.csv), [segment results](reports/temporal_segment_results.csv), and [configuration](reports/temporal_evaluation_config.json).
+
+## Untuned Model Comparison
+
+Compared Logistic Regression, XGBoost, and LightGBM using the same seven transaction features, historical training cohort, and later evaluation cohort. No hyperparameter tuning or early stopping was performed.
+
+| Model | Log Loss ↓ | ROC-AUC ↑ | Average Precision ↑ |
+|---|---:|---:|---:|
+| Logistic Regression | **0.2129** | **0.8296** | **0.5365** |
+| XGBoost | 0.2294 | 0.8289 | 0.4906 |
+| LightGBM | 0.2299 | 0.8295 | 0.4887 |
+
+Logistic Regression performs best in this initial comparison. Similar ROC-AUC values indicate similar overall ranking performance, while Log Loss and Average Precision distinguish the models more clearly.
+
+These results apply to the current features and untuned configurations. They do not establish that Logistic Regression is universally superior. The limitations of the historical cohort evaluation remain applicable.
+
+See [the comparison notebook](notebooks/07_model_comparison.ipynb), [results](reports/untuned_model_comparison.csv), and [parameters and package versions](reports/untuned_benchmark_config.json).
 
 ## Data
 
