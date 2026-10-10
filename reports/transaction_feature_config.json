@@ -2,8 +2,8 @@
   "status": "provisional",
   "transaction_source": "transactions.csv",
   "cohort_source": "train_v2.csv",
-  "window_start": "2016-11-03",
-  "cutoff": "2017-01-31",
+  "window_start": "2016-12-01",
+  "cutoff": "2017-02-28",
   "window_days": 90,
   "label_period_verified": false,
   "no_transaction_policy": {

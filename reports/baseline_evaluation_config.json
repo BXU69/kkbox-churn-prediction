@@ -1,0 +1,21 @@
+{
+  "validation_method": "stratified random holdout",
+  "validation_fraction": 0.2,
+  "random_state": 42,
+  "training_rows": 776768,
+  "validation_rows": 194192,
+  "cohort_source": "train_v2.csv",
+  "transaction_source": "transactions.csv",
+  "feature_cutoff": "2017-02-28",
+  "features": [
+    "transaction_rows_90d",
+    "transaction_days_90d",
+    "cancel_rows_90d",
+    "auto_renew_share_90d",
+    "avg_plan_days_90d",
+    "days_since_last_transaction_90d",
+    "has_transaction_90d"
+  ],
+  "temporal_validation_completed": false,
+  "independent_test_evaluation_completed": false
+}

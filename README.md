@@ -4,7 +4,7 @@ An ongoing portfolio project exploring customer churn through SQL, Python, predi
 
 ## Current Progress
 
-Completed an initial audit of the churn labels and member data. Modeling and experiment design are planned.
+Completed label and member data audits, transaction version comparisons, candidate transaction feature engineering, and an initial logistic regression benchmark with an availability-only comparison. Temporal validation, additional models, and retention experiment design are planned.
 
 ### Initial Findings
 
@@ -42,18 +42,36 @@ See [the transaction audit notebook](notebooks/02_transaction_audit.ipynb) for t
 
 ## Transaction Feature Development
 
-Built six candidate transaction features using a 90-day window from November 3, 2016 through January 31, 2017, using `transactions.csv` and the user cohort from `train_v2.csv`.
+Built six candidate transaction features using a 90-day window from December 1, 2016 through February 28, 2017, using `transactions.csv` and the user cohort from `train_v2.csv`.
 
 Features include transaction row count, distinct transaction days, cancellation row count, auto-renewal share, average plan duration, and days since the most recent transaction within the window.
 
 All 970,960 labeled users are retained. Users without window transactions receive zero count features; averages and recency remain missing. A `has_transaction_90d` indicator distinguishes the two groups.
 
-- 904,699 users have window transactions, with a churn rate of 6.30%.
-- 66,261 users have no window transactions, with a churn rate of 45.83%.
+- 943,179 users (97.14%) have window transactions, with a churn rate of 6.79%.
+- 27,781 users (2.86%) have no window transactions, with a churn rate of 83.77%.
 
-These are descriptive results under a provisional cutoff. Alignment between the feature window and label period has not yet been verified; no model performance is reported.
+These are descriptive associations, not causal findings. The cutoff follows a working interpretation of the dataset's March 2017 training update; the exact label-generation parameters have not been independently verified.
 
 User-level feature data is stored locally and excluded from Git. See [the feature notebook](notebooks/03_transaction_features.ipynb), [the SQL query](sql/transaction_features_90d.sql), and [the configuration](reports/transaction_feature_config.json).
+
+## Logistic Regression Baseline
+
+Evaluated three models on the same stratified 80/20 random split of `train_v2`, using transaction features with a February 28, 2017 cutoff. The training set contains 776,768 users and the validation set contains 194,192 users.
+
+Missing-value imputation and standardization are fitted on the training set only.
+
+| Model | Log Loss ↓ | ROC-AUC ↑ | Average Precision ↑ |
+|---|---:|---:|---:|
+| Constant probability | 0.3024 | 0.5000 | 0.0899 |
+| Transaction availability only | 0.2544 | 0.6293 | 0.2869 |
+| Logistic regression — all seven features | **0.2008** | **0.8542** | **0.5555** |
+
+The full model reduces Log Loss by approximately 33.6% relative to the constant baseline and 21.1% relative to the availability-only model. This comparison suggests that the additional transaction features provide predictive information beyond transaction availability.
+
+These are initial random-holdout results. Temporal validation, independent test evaluation, and verification of the exact label-generation parameters remain outstanding.
+
+See [the baseline notebook](notebooks/04_baseline_model.ipynb), [model comparison](reports/baseline_model_comparison.csv), and [evaluation configuration](reports/baseline_evaluation_config.json).
 
 ## Data
 
