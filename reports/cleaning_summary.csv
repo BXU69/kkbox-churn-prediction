@@ -1,0 +1,5 @@
+metric,count
+total_users,970960
+users_without_member_info,109993
+users_with_unusable_age,584245
+users_with_unknown_gender,582055

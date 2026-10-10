@@ -228,3 +228,6 @@ models/
 # Local credentials
 .env
 kaggle.json
+
+# macOS
+.DS_Store
