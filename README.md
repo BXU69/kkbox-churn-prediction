@@ -178,6 +178,25 @@ The full CSV is scanned with DuckDB rather than loaded into pandas. Raw logs rem
 
 See [the audit notebook](notebooks/09_user_logs_audit.ipynb), [audit results](reports/user_logs_audit.csv), and [quality policy](reports/user_logs_quality_policy.json).
 
+## Daily Listening Data Preparation
+
+Extracted two 30-day listening windows for the modeling cohorts and saved them as Zstandard-compressed Parquet partitions.
+
+| Cohort | Window | Records | Users with logs | Users without window logs |
+|---|---|---:|---:|---:|
+| Historical training | Nov 1–30, 2016 | 11,326,275 | 667,477 | 214,650 |
+| Later evaluation | Jan 30–Feb 28, 2017 | 12,682,786 | 758,941 | 212,019 |
+
+No duplicate user-day records were found in either extracted window. No deduplication or within-day aggregation was required.
+
+The extracted data occupies approximately 1.04 GiB, compared with the 28.42 GiB raw CSV. User-level data remains local and is excluded from Git.
+
+Song counts, raw listening duration, cleaned duration, and a duration anomaly indicator are retained. The provisional duration threshold still requires sensitivity checks.
+
+Users and days without logs are not yet materialized. Coverage indicators and missing-day handling will be added during feature and sequence construction.
+
+See [the preparation notebook](notebooks/10_daily_listening_data.ipynb), [window summary](reports/listening_window_summary.csv), [duplicate checks](reports/listening_user_day_duplicates.csv), and [configuration](reports/daily_listening_config.json).
+
 ## Data
 
 Source: [WSDM — KKBOX's Churn Prediction Challenge](https://www.kaggle.com/competitions/kkbox-churn-prediction-challenge/data).

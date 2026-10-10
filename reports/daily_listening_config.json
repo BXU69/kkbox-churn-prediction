@@ -1,0 +1,27 @@
+{
+  "sql_sha256": "079bbaf48b1a7a45fec81f938ce44e31efd4620b12ce9b67622867a4374ccab0",
+  "source_size_bytes": 30514081415,
+  "source_mtime_ns": 1505418190000000000,
+  "historical_users": 882127,
+  "evaluation_users": 970960,
+  "training_window": [
+    "2016-11-01",
+    "2016-11-30"
+  ],
+  "evaluation_window": [
+    "2017-01-30",
+    "2017-02-28"
+  ],
+  "output_directory": "data/processed/listening_windows_30d",
+  "partition_column": "cohort",
+  "compression": "zstd",
+  "window_days": 30,
+  "user_day_duplicates_checked": true,
+  "duplicate_user_days": 0,
+  "duration_upper_bound": 86400,
+  "raw_duration_retained": true,
+  "clean_duration_column": "total_secs_clean",
+  "duration_anomaly_column": "duration_anomaly",
+  "threshold_sensitivity_checked": false,
+  "missing_user_days_materialized": false
+}

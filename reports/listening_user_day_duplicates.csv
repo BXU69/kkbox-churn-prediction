@@ -1,0 +1,3 @@
+cohort,duplicate_user_days,rows_in_duplicate_days,excess_rows,max_records_per_duplicate_day
+historical_train,0,0.0,0.0,0
+later_evaluation,0,0.0,0.0,0
