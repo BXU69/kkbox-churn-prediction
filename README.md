@@ -73,6 +73,26 @@ These are initial random-holdout results. Temporal validation, independent test 
 
 See [the baseline notebook](notebooks/04_baseline_model.ipynb), [model comparison](reports/baseline_model_comparison.csv), and [evaluation configuration](reports/baseline_evaluation_config.json).
 
+## Historical Label Reconstruction
+
+Reconstructed December 2016 churn labels using `transactions.csv`, following the ordering and renewal-gap rules in the provided `WSDMChurnLabeller.scala` example.
+
+- History cutoff: November 30, 2016.
+- Candidate expiration dates: December 1–31, 2016.
+- Outcome observation ends: January 30, 2017.
+- Labeled users: 882,127.
+- Churned users: 85,237 (9.66%).
+- No observed renewal: 66,442 users.
+- Observed renewal with a gap of at least 30 days: 18,795 users.
+
+Six synthetic checks cover no renewal, 29-day and 30-day gaps, cancellation before renewal, early renewal, and same-day subscription and cancellation.
+
+These labels are reconstructed, not official competition labels. Exact parity with the Scala implementation has not been independently verified. Future-derived diagnostic fields are excluded from model inputs.
+
+The historical outcome window ends before the planned February 28, 2017 validation prediction date.
+
+See [the label reconstruction notebook](notebooks/05_historical_labels.ipynb), [candidate selection SQL](sql/historical_candidates.sql), [label SQL](sql/historical_labels.sql), and [configuration](reports/historical_label_config.json).
+
 ## Data
 
 Source: [WSDM — KKBOX's Churn Prediction Challenge](https://www.kaggle.com/competitions/kkbox-churn-prediction-challenge/data).

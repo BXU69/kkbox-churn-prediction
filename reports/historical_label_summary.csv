@@ -1,0 +1,7 @@
+metric,value
+users,882127
+churned_users,85237
+churn_rate,0.09662667620422002
+users_without_observed_renewal,66442
+users_with_negative_renewal_gap,91682
+latest_observed_renewal,2017-01-30 00:00:00

@@ -1,0 +1,13 @@
+{
+  "label_source": "reconstructed",
+  "transaction_source": "transactions.csv",
+  "history_cutoff": "2016-11-30",
+  "expiry_start": "2016-12-01",
+  "expiry_end": "2016-12-31",
+  "outcome_observation_end": "2017-01-30",
+  "churn_gap_threshold_days": 30,
+  "churn_rule": "no observed renewal or renewal gap >= 30 days",
+  "reference": "WSDMChurnLabeller.scala",
+  "toy_cases_passed": 6,
+  "official_label_parity_verified": false
+}
