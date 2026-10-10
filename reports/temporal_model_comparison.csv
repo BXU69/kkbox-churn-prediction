@@ -1,0 +1,4 @@
+model,log_loss,roc_auc,average_precision
+Historical logistic regression,0.21292639620276232,0.8295799903692244,0.53652267245321
+Historical availability-only model,0.25509925303481495,0.630690319520244,0.2892056921600322
+Historical constant probability,0.3026648380403189,0.5,0.08994191315811156

@@ -1,0 +1,28 @@
+{
+  "evaluation_method": "historical cohort evaluation",
+  "training_label_source": "reconstructed December 2016 labels",
+  "validation_label_source": "train_v2.csv",
+  "transaction_source": "transactions.csv",
+  "training_feature_cutoff": "2016-11-30",
+  "training_outcome_end": "2017-01-30",
+  "validation_feature_cutoff": "2017-02-28",
+  "window_days": 90,
+  "training_users": 882127,
+  "validation_users": 970960,
+  "shared_users": 736338,
+  "features": [
+    "transaction_rows_90d",
+    "transaction_days_90d",
+    "cancel_rows_90d",
+    "auto_renew_share_90d",
+    "avg_plan_days_90d",
+    "days_since_last_transaction_90d",
+    "has_transaction_90d"
+  ],
+  "preprocessing_fit_on": "historical training data only",
+  "training_outcomes_end_before_validation_cutoff": true,
+  "official_label_parity_verified": false,
+  "validation_label_period_independently_verified": false,
+  "point_in_time_source_snapshots_verified": false,
+  "independent_test_evaluation_completed": false
+}

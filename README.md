@@ -93,6 +93,35 @@ The historical outcome window ends before the planned February 28, 2017 validati
 
 See [the label reconstruction notebook](notebooks/05_historical_labels.ipynb), [candidate selection SQL](sql/historical_candidates.sql), [label SQL](sql/historical_labels.sql), and [configuration](reports/historical_label_config.json).
 
+## Historical Cohort Evaluation
+
+Trained on 882,127 users with reconstructed December 2016 labels and transaction features ending November 30, 2016. Training outcomes are observed through January 30, 2017, before the later prediction cutoff.
+
+Evaluated on 970,960 `train_v2` users with features ending February 28, 2017. Preprocessing and model fitting use historical training data only.
+
+| Model | Log Loss ↓ | ROC-AUC ↑ | Average Precision ↑ |
+|---|---:|---:|---:|
+| Historical constant probability | 0.3027 | 0.5000 | 0.0899 |
+| Historical availability-only model | 0.2551 | 0.6301 | 0.2892 |
+| Historical logistic regression | **0.2129** | **0.8296** | **0.5365** |
+
+The full model reduces Log Loss by approximately 29.6% relative to the historical constant baseline.
+
+### Cohort Membership Analysis
+
+| Later-cohort segment | Users | Churn rate | Log Loss | ROC-AUC | Average Precision |
+|---|---:|---:|---:|---:|---:|
+| Seen in historical training | 736,338 | 4.66% | 0.1681 | 0.7185 | 0.1829 |
+| Not seen in historical training | 234,622 | 22.60% | 0.3535 | 0.8730 | 0.7139 |
+
+“Not seen” means absent from the historical training cohort, not necessarily newly registered. Different segment prevalences limit direct comparisons of Log Loss and Average Precision.
+
+### Limitations
+
+This is a retrospective historical cohort evaluation. Reconstructed training labels and official validation labels have different provenance. Exact label parity, validation label-generation parameters, and point-in-time source snapshots have not been independently verified. This is not an untouched independent test.
+
+See [the evaluation notebook](notebooks/06_temporal_validation.ipynb), [model comparison](reports/temporal_model_comparison.csv), [segment results](reports/temporal_segment_results.csv), and [configuration](reports/temporal_evaluation_config.json).
+
 ## Data
 
 Source: [WSDM — KKBOX's Churn Prediction Challenge](https://www.kaggle.com/competitions/kkbox-churn-prediction-challenge/data).

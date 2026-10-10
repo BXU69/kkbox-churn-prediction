@@ -1,0 +1,3 @@
+cohort,users,churn_rate,transaction_coverage
+Historical training,882127,0.09662667620422002,0.9799280602452934
+Later validation,970960,0.08994191315811156,0.9713881107357667
