@@ -1,0 +1,9 @@
+{
+  "source": "user_logs.csv",
+  "negative_seconds": "set duration to missing; retain song counts",
+  "seconds_above_86400": "provisionally set duration to missing; retain song counts",
+  "duration_upper_bound": 86400,
+  "preserve_duration_anomaly_indicator": true,
+  "threshold_sensitivity_checked": false,
+  "user_day_duplicates_checked": false
+}

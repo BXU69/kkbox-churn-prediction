@@ -158,6 +158,26 @@ Logistic Regression remains the strongest model in the current later-cohort comp
 
 See [the tuning notebook](notebooks/08_hyperparameter_tuning.ipynb), [before-and-after results](reports/tuning_comparison.csv), and [search configuration](reports/hyperparameter_tuning_config.json).
 
+## Listening Log Audit
+
+Audited 392,106,543 listening records covering January 1, 2015 through February 28, 2017.
+
+No missing user IDs, invalid dates, missing or unparseable song counts, negative song counts, or non-finite listening durations were found.
+
+Listening duration anomalies include:
+
+- 61,493 rows with negative durations.
+- 142,993 rows with durations exceeding 86,400 seconds.
+- Extreme values near ±9.22 × 10¹⁸ seconds.
+
+The provisional processing policy retains song counts and represents negative or above-24-hour durations as missing, with an anomaly indicator. The upper bound is an analytical assumption requiring sensitivity checks, not a confirmed data-validity rule.
+
+Duplicate user-day checks will be performed on the extracted modeling windows.
+
+The full CSV is scanned with DuckDB rather than loaded into pandas. Raw logs remain local and are excluded from Git.
+
+See [the audit notebook](notebooks/09_user_logs_audit.ipynb), [audit results](reports/user_logs_audit.csv), and [quality policy](reports/user_logs_quality_policy.json).
+
 ## Data
 
 Source: [WSDM — KKBOX's Churn Prediction Challenge](https://www.kaggle.com/competitions/kkbox-churn-prediction-challenge/data).

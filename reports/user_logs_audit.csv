@@ -1,0 +1,2 @@
+rows,first_log_date,last_log_date,missing_user_ids,missing_or_invalid_dates,rows_with_missing_or_invalid_counts,rows_with_negative_counts,rows_with_missing_or_invalid_seconds,rows_with_negative_seconds,rows_with_zero_seconds,rows_above_24_hours,min_finite_seconds,max_finite_seconds
+392106543,2015-01-01,2017-02-28,0,0,0,0,0,61493,0,142993,-9223372036854776.0,9223372036854776.0
