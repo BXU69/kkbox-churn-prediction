@@ -1,0 +1,3 @@
+file,rows,missing_or_invalid_plan_days,negative_plan_days,zero_plan_days,missing_or_invalid_amounts,negative_amount_rows,zero_payment_rows,invalid_auto_renew,invalid_cancel,max_plan_days,max_amount_paid
+transactions.csv,21547746,0,0,870124,0,0,1196876,0,0,450,2000.0
+transactions_v2.csv,1431009,0,0,2218,0,0,21448,0,0,450,2000.0

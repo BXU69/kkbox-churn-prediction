@@ -17,6 +17,29 @@ Completed an initial audit of the churn labels and member data. Modeling and exp
 
 ![Churn by member record availability](reports/figures/churn_by_member_availability.png)
 
+## Transaction Data Audit
+
+Audited both transaction files for date coverage, cross-version overlap, exact duplicate rows in v2, and numeric and binary field validity.
+
+### Findings
+
+- `transactions.csv` contains 21,547,746 rows, with transaction dates from January 2015 through February 2017.
+- `transactions_v2.csv` contains 1,431,009 rows: 361,187 historical rows before March 2017 and 1,069,822 March 2017 rows.
+- None of the historical v2 rows matches a v1 row across all nine fields.
+- Of the historical v2 rows, 9,967 match a v1 user and transaction date; 6,126 match all fields except the membership expiration date.
+- No exact duplicate rows were found within v2. Exact duplicates within v1 have not yet been audited.
+- Both files contain no missing or unparseable plan durations or amounts, no negative plan durations or amounts, and no invalid auto-renewal or cancellation flags.
+- Zero-payment and zero-duration records are retained pending further investigation.
+- Expiration dates include values such as January 1, 1970 and October 15, 2036, which require further investigation.
+
+### Processing Decisions
+
+The files will not be concatenated or overwritten based solely on user ID and transaction date. These fields do not uniquely identify a transaction.
+
+Initial feature development will use `transactions.csv` alone. A January 31, 2017 cutoff, taken from the official labeling example, is a provisional configuration. Its alignment with the supplied label files must be verified before model evaluation.
+
+See [the transaction audit notebook](notebooks/02_transaction_audit.ipynb) for the queries and detailed results.
+
 ## Data
 
 Source: [WSDM — KKBOX's Churn Prediction Challenge](https://www.kaggle.com/competitions/kkbox-churn-prediction-challenge/data).
