@@ -138,6 +138,26 @@ These results apply to the current features and untuned configurations. They do 
 
 See [the comparison notebook](notebooks/07_model_comparison.ipynb), [results](reports/untuned_model_comparison.csv), and [parameters and package versions](reports/untuned_benchmark_config.json).
 
+## Hyperparameter Tuning
+
+Selected parameters using a fixed stratified 80/20 split within the historical training cohort. The search evaluated four Logistic Regression configurations and eight configurations each for XGBoost and LightGBM, minimizing internal validation Log Loss.
+
+Selected models were refitted on all historical training data before later-cohort evaluation. The later cohort was not used in the parameter search or for early stopping.
+
+| Model | Untuned later Log Loss ↓ | Tuned later Log Loss ↓ |
+|---|---:|---:|
+| Logistic Regression | 0.212926 | 0.212925 |
+| XGBoost | 0.229378 | 0.237186 |
+| LightGBM | 0.229887 | 0.234045 |
+
+Tuning left Logistic Regression performance essentially unchanged and increased later-cohort Log Loss by approximately 3.40% for XGBoost and 1.81% for LightGBM.
+
+The best configurations on the internal historical holdout did not improve later-period performance. This highlights a limitation of parameter selection within a single historical cohort. Temporal changes and differences in label provenance require further investigation.
+
+Logistic Regression remains the strongest model in the current later-cohort comparison. These results are exploratory; the later cohort has been evaluated repeatedly and is not an untouched independent test.
+
+See [the tuning notebook](notebooks/08_hyperparameter_tuning.ipynb), [before-and-after results](reports/tuning_comparison.csv), and [search configuration](reports/hyperparameter_tuning_config.json).
+
 ## Data
 
 Source: [WSDM — KKBOX's Churn Prediction Challenge](https://www.kaggle.com/competitions/kkbox-churn-prediction-challenge/data).

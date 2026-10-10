@@ -1,0 +1,4 @@
+model,best_internal_log_loss,candidates_evaluated,search_seconds,best_parameters
+LightGBM,0.13226200040588904,8,49.050079874985386,"{'subsample_freq': 1, 'subsample': 0.8, 'reg_lambda': 10.0, 'num_leaves': 31, 'n_estimators': 400, 'min_child_samples': 100, 'learning_rate': 0.03, 'colsample_bytree': 0.8}"
+XGBoost,0.1323402374982834,8,32.61591408299864,"{'subsample': 0.8, 'reg_lambda': 20.0, 'n_estimators': 400, 'min_child_weight': 20, 'max_depth': 6, 'learning_rate': 0.1, 'colsample_bytree': 1.0}"
+Logistic regression,0.1944774522118956,4,3.6126550000044517,{'classifier__C': 10.0}
