@@ -218,3 +218,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local datasets and generated model files
+data/
+models/
+*.7z
+*.zip
+
+# Local credentials
+.env
+kaggle.json
