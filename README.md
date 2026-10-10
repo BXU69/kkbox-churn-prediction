@@ -40,6 +40,21 @@ Initial feature development will use `transactions.csv` alone. A January 31, 201
 
 See [the transaction audit notebook](notebooks/02_transaction_audit.ipynb) for the queries and detailed results.
 
+## Transaction Feature Development
+
+Built six candidate transaction features using a 90-day window from November 3, 2016 through January 31, 2017, using `transactions.csv` and the user cohort from `train_v2.csv`.
+
+Features include transaction row count, distinct transaction days, cancellation row count, auto-renewal share, average plan duration, and days since the most recent transaction within the window.
+
+All 970,960 labeled users are retained. Users without window transactions receive zero count features; averages and recency remain missing. A `has_transaction_90d` indicator distinguishes the two groups.
+
+- 904,699 users have window transactions, with a churn rate of 6.30%.
+- 66,261 users have no window transactions, with a churn rate of 45.83%.
+
+These are descriptive results under a provisional cutoff. Alignment between the feature window and label period has not yet been verified; no model performance is reported.
+
+User-level feature data is stored locally and excluded from Git. See [the feature notebook](notebooks/03_transaction_features.ipynb), [the SQL query](sql/transaction_features_90d.sql), and [the configuration](reports/transaction_feature_config.json).
+
 ## Data
 
 Source: [WSDM — KKBOX's Churn Prediction Challenge](https://www.kaggle.com/competitions/kkbox-churn-prediction-challenge/data).
