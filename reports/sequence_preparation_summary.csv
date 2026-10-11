@@ -1,0 +1,3 @@
+cohort,users,sequence_days,channels,users_with_logs,users_without_logs,recorded_user_days,invalid_duration_days
+historical_train,882127,30,9,667477,214650,11326275,2384
+later_evaluation,970960,30,9,758941,212019,12682786,3052

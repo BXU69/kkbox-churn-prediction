@@ -1,0 +1,47 @@
+{
+  "sequence_directory": "data/processed/gru_sequences_v1",
+  "sequence_length": 30,
+  "sequence_channels": [
+    "log1p_num_25",
+    "log1p_num_50",
+    "log1p_num_75",
+    "log1p_num_985",
+    "log1p_num_100",
+    "log1p_num_unq",
+    "log1p_valid_seconds",
+    "log_present",
+    "duration_valid"
+  ],
+  "sequence_dtype": "float32",
+  "numeric_transform": "log1p",
+  "transaction_columns": [
+    "transaction_rows_90d",
+    "transaction_days_90d",
+    "cancel_rows_90d",
+    "auto_renew_share_90d",
+    "avg_plan_days_90d",
+    "days_since_last_transaction_90d",
+    "has_transaction_90d"
+  ],
+  "transaction_missing_values": "retained for training-only preprocessing",
+  "user_order": "msno ascending within each cohort",
+  "missing_day_encoding": "all zeros with log_present=0",
+  "invalid_duration_encoding": "duration value=0, log_present=1, duration_valid=0; song counts retained",
+  "all_labeled_users_retained": true,
+  "toy_alignment_checks_passed": true,
+  "source_record_counts_verified": true,
+  "learned_preprocessing_fitted": false,
+  "cohorts": {
+    "historical_train": {
+      "user_table": "historical_combined_features_20161130.parquet",
+      "window_start": "2016-11-01",
+      "window_end": "2016-11-30"
+    },
+    "later_evaluation": {
+      "user_table": "later_combined_features_20170228.parquet",
+      "window_start": "2017-01-30",
+      "window_end": "2017-02-28"
+    }
+  },
+  "pytorch_version": "2.14.1"
+}

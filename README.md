@@ -283,6 +283,20 @@ The plan specifies intention-to-treat analysis, a fixed renewal observation endp
 
 See [the experiment plan](reports/retention_experiment_plan.md), [power analysis](reports/retention_power_analysis.csv), and [planning notebook](notebooks/14_retention_experiment_design.ipynb).
 
+## Sequence Preparation for GRU
+
+Constructed chronological 30-day listening sequences for all 882,127 historical training users and 970,960 later evaluation users.
+
+Each sequence contains nine channels: six log-transformed song counts, log-transformed valid listening duration, log presence, and duration validity. Seven transaction features are saved separately as additional model inputs.
+
+Missing days have zero values and a log-presence indicator of zero. Recorded days with invalid duration retain their song counts and have duration validity set to zero.
+
+Sequences, transaction inputs, labels, and user metadata share the same user ordering. Alignment checks and reconciliation against extracted daily-record counts passed.
+
+Arrays are stored locally as memory-mapped NumPy files and excluded from Git. No learned preprocessing parameters have been fitted at this stage.
+
+See [the preparation notebook](notebooks/15_sequence_preparation.ipynb), [summary](reports/sequence_preparation_summary.csv), and [input configuration](reports/sequence_preparation_config.json).
+
 ## Data
 
 Source: [WSDM — KKBOX's Churn Prediction Challenge](https://www.kaggle.com/competitions/kkbox-churn-prediction-challenge/data).
