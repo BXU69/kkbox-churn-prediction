@@ -248,6 +248,29 @@ These metrics measure risk concentration, not customers retained or causal inter
 
 See [the evaluation notebook](notebooks/12_behavior_model_evaluation.ipynb), [feature comparison](reports/behavior_feature_comparison.csv), [duration sensitivity](reports/duration_sensitivity_results.csv), and [targeting results](reports/risk_targeting_results.csv).
 
+## Segment Insights and Retention Hypothesis
+
+Analyzed churn by recorded listening days and recent playback changes using predefined segment rules.
+
+Low log coverage and playback decline did not consistently identify substantially higher-risk groups across cohorts. Missing logs alone are therefore not treated as proof of disengagement.
+
+A more specific exploratory target consists of users with at least four recorded days and 20 recorded plays in the previous seven-day window, followed by no logs in the most recent seven days.
+
+| Cohort | Target churn rate | Stable/increased-play reference | Difference |
+|---|---:|---:|---:|
+| Historical training | 9.90% | 7.22% | +2.68 pp |
+| Later evaluation | 13.89% | 9.32% | +4.57 pp |
+
+The later target segment contains 5,041 users and has approximately 1.49 times the reference group's churn rate. The direction is consistent across cohorts, but this remains an observational comparison with differing label provenance.
+
+### Retention Hypothesis
+
+After verifying logging availability, subscription status, and contact eligibility, test personalized music recommendations or re-engagement reminders for this segment.
+
+The observed churn-rate difference is not an intervention effect. The reference group is not a randomized control group, and no retention experiment has been run.
+
+See [the segment notebook](notebooks/13_retention_segments.ipynb), [segment comparison](reports/retention_segment_comparison.csv), and [rules and hypothesis](reports/retention_segment_config.json).
+
 ## Data
 
 Source: [WSDM — KKBOX's Churn Prediction Challenge](https://www.kaggle.com/competitions/kkbox-churn-prediction-challenge/data).

@@ -1,0 +1,21 @@
+{
+  "listening_window_days": 30,
+  "recent_window_days": 7,
+  "previous_window_days": 7,
+  "established_activity_min_previous_days": 4,
+  "established_activity_min_previous_plays": 20,
+  "strong_decline_ratio_upper_bound": 0.5,
+  "moderate_decline_ratio_upper_bound_exclusive": 0.8,
+  "target_segment": "No recent logs after established activity",
+  "reference_segment": "Stable or increased recorded plays",
+  "target_rule": "previous recorded days >= 4, previous recorded plays >= 20, and recent recorded days = 0",
+  "target_selection": "exploratory after examining segment results",
+  "intervention_hypothesis": "Test personalized music recommendations or re-engagement reminders.",
+  "eligibility_checks": [
+    "Verify logging availability.",
+    "Verify current subscription status.",
+    "Verify contact eligibility."
+  ],
+  "causal_effect_established": false,
+  "experiment_run": false
+}
