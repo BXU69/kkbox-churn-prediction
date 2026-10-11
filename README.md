@@ -4,7 +4,7 @@ An ongoing portfolio project exploring customer churn through SQL, Python, predi
 
 ## Current Progress
 
-Completed data audits, transaction feature engineering, historical label reconstruction, and an initial historical-cohort comparison of Logistic Regression, XGBoost, and LightGBM. Hyperparameter tuning, behavioral features, retention experiment design, and sequence modeling are planned.
+Completed data audits, transaction and listening feature engineering, historical label reconstruction, model benchmarking, and initial hyperparameter tuning. Evaluation of the combined features, duration-policy sensitivity checks, retention experiment design, and sequence modeling are planned.
 
 ### Initial Findings
 
@@ -196,6 +196,25 @@ Song counts, raw listening duration, cleaned duration, and a duration anomaly in
 Users and days without logs are not yet materialized. Coverage indicators and missing-day handling will be added during feature and sequence construction.
 
 See [the preparation notebook](notebooks/10_daily_listening_data.ipynb), [window summary](reports/listening_window_summary.csv), [duplicate checks](reports/listening_user_day_duplicates.csv), and [configuration](reports/daily_listening_config.json).
+
+## Listening Behavior Features
+
+Aggregated 24,009,061 extracted daily activity records into user-level listening features and joined them to the transaction feature tables.
+
+The combined datasets retain all 882,127 historical training users and 970,960 later evaluation users, with 23 candidate features per user: seven transaction features, fifteen listening features, and one listening-log coverage indicator.
+
+Listening features describe recorded days, playback volume, completed-play ratio, valid listening duration, recency, and changes between the most recent seven days and the preceding seven days.
+
+- Historical training: 667,477 users have window logs; 214,650 do not.
+- Later evaluation: 758,941 users have window logs; 212,019 do not.
+
+Recorded-count features are filled with zero for users without logs, with a coverage indicator retained. Duration totals, averages, ratios, and recency remain missing when unavailable. Summed daily unique-song counts are not interpreted as monthly distinct songs.
+
+The transaction window spans 90 days and the listening window spans 30 days, ending at each cohort's feature cutoff. The provisional duration threshold still requires sensitivity checks. Predictive improvements from listening features have not yet been evaluated.
+
+User-level feature tables remain local and are excluded from Git.
+
+See [the feature notebook](notebooks/11_listening_features.ipynb), [aggregation SQL](sql/listening_features_30d.sql), [cohort summary](reports/combined_feature_summary.csv), and [feature configuration](reports/combined_feature_config.json).
 
 ## Data
 

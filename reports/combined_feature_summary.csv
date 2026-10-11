@@ -1,0 +1,3 @@
+cohort,users,users_with_logs,users_without_logs,feature_count,churn_rate
+historical_train,882127,667477,214650,23,0.09662667620422002
+later_evaluation,970960,758941,212019,23,0.08994191315811156

@@ -1,0 +1,3 @@
+cohort,users_with_logs,mean_recorded_days,mean_recorded_plays,flagged_duration_days
+historical_train,667477,16.968786939475066,679.1087213492001,2384.0
+later_evaluation,758941,16.711162000735236,661.9846588865274,3052.0
