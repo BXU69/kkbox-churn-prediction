@@ -271,6 +271,18 @@ The observed churn-rate difference is not an intervention effect. The reference 
 
 See [the segment notebook](notebooks/13_retention_segments.ipynb), [segment comparison](reports/retention_segment_comparison.csv), and [rules and hypothesis](reports/retention_segment_config.json).
 
+## Proposed Retention Experiment and Power Analysis
+
+Designed a user-randomized 1:1 experiment testing personalized recommendations and re-engagement reminders for previously active subscribers with no recent listening logs.
+
+Using a historical churn estimate of 13.89%, a planned 2-percentage-point absolute reduction, two-sided alpha 0.05, and 80% power, the analysis requires 4,400 users per arm (8,800 total).
+
+The historical candidate pool contains 5,041 users and provides approximately 56.4% power under the balanced-pool approximation, before prospective eligibility checks. Additional unique participants would be required.
+
+The plan specifies intention-to-treat analysis, a fixed renewal observation endpoint, data-quality checks, and up to 60 days of follow-up after enrollment. No experiment has been run and no causal retention effect is claimed.
+
+See [the experiment plan](reports/retention_experiment_plan.md), [power analysis](reports/retention_power_analysis.csv), and [planning notebook](notebooks/14_retention_experiment_design.ipynb).
+
 ## Data
 
 Source: [WSDM — KKBOX's Churn Prediction Challenge](https://www.kaggle.com/competitions/kkbox-churn-prediction-challenge/data).

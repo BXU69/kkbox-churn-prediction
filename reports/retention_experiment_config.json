@@ -1,0 +1,22 @@
+{
+  "status": "proposed; not run",
+  "historical_baseline_rate": 0.1388613370363023,
+  "baseline_requires_prospective_calibration": true,
+  "historical_candidate_users": 5041,
+  "absolute_mde": 0.02,
+  "alpha": 0.05,
+  "target_power": 0.8,
+  "alternative": "two-sided",
+  "power_method": "normal approximation with Cohen's h",
+  "allocation_ratio": 1.0,
+  "required_per_arm": 4400,
+  "required_total": 8800,
+  "randomization_unit": "user",
+  "analysis_population": "intention-to-treat",
+  "maximum_days_until_baseline_expiry": 30,
+  "renewal_observation_days": 30,
+  "maximum_followup_days": 60,
+  "recruitment_scenarios_are_forecasts": false,
+  "interim_efficacy_testing_planned": false,
+  "statsmodels_version": "0.15.0"
+}

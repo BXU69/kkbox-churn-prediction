@@ -1,0 +1,4 @@
+hypothetical_eligible_unique_users_per_day,recruitment_days,max_followup_after_last_enrollment_days,days_to_full_followup_excluding_ingestion_lag
+50,176,60,236
+100,88,60,148
+200,44,60,104
