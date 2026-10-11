@@ -216,6 +216,38 @@ User-level feature tables remain local and are excluded from Git.
 
 See [the feature notebook](notebooks/11_listening_features.ipynb), [aggregation SQL](sql/listening_features_30d.sql), [cohort summary](reports/combined_feature_summary.csv), and [feature configuration](reports/combined_feature_config.json).
 
+## Behavioral Feature Evaluation and Risk Targeting
+
+Compared seven transaction features with 23 combined transaction and listening features using identical historical training and later evaluation cohorts, with fixed model configurations.
+
+| Model | Transaction-only Log Loss ↓ | Combined Log Loss ↓ | Combined ROC-AUC ↑ | Combined AP ↑ |
+|---|---:|---:|---:|---:|
+| Logistic Regression | 0.212926 | **0.207310** | **0.849893** | **0.550063** |
+| XGBoost | 0.229378 | 0.230022 | 0.839235 | 0.489641 |
+| LightGBM | 0.229887 | 0.225507 | 0.839498 | 0.494052 |
+
+Listening features reduced Logistic Regression Log Loss by 2.64% and LightGBM Log Loss by 1.91%. XGBoost ranking performance improved, but Log Loss slightly worsened.
+
+### Duration Sensitivity
+
+For Logistic Regression, 12-hour, 24-hour, and 48-hour duration bounds, plus exclusion of all duration-derived features, produced Log Loss values between 0.207280 and 0.207319.
+
+Performance was numerically similar across these checks. The predeclared 24-hour policy is retained; this does not establish that the threshold is operationally correct.
+
+### Highest-Risk 10% of Users
+
+The combined-feature Logistic Regression selected 97,096 users, including 51,950 observed churners:
+
+- Precision@10%: 53.50%.
+- Recall@10%: 59.49%.
+- Lift@10%: 5.95.
+
+At the same selection budget, listening features identified 1,821 additional churners relative to transaction-only Logistic Regression.
+
+These metrics measure risk concentration, not customers retained or causal intervention effects. Results remain exploratory later-cohort evaluations, with the previously documented label and source-data limitations.
+
+See [the evaluation notebook](notebooks/12_behavior_model_evaluation.ipynb), [feature comparison](reports/behavior_feature_comparison.csv), [duration sensitivity](reports/duration_sensitivity_results.csv), and [targeting results](reports/risk_targeting_results.csv).
+
 ## Data
 
 Source: [WSDM — KKBOX's Churn Prediction Challenge](https://www.kaggle.com/competitions/kkbox-churn-prediction-challenge/data).
