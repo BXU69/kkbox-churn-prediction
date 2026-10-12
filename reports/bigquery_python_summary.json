@@ -1,0 +1,13 @@
+{
+  "summary": {
+    "total_users": 10000,
+    "churned_users": 910,
+    "churn_rate_pct": 9.1,
+    "users_without_transactions": 293
+  },
+  "job": {
+    "bytes_processed": 160000,
+    "bytes_billed": 10485760,
+    "cache_hit": false
+  }
+}

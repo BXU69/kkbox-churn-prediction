@@ -1,0 +1,2 @@
+total_users,unique_users,churned_users,users_without_transactions,total_transaction_rows
+10000,10000,910,293,27094

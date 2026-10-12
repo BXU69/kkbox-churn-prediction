@@ -1,0 +1,3 @@
+variant,processed_kb_display,duration_ms,billed_mb_display,slot_ms,transaction_rows,total_amount_paid
+raw,635.02,190,10,9,9315,1207366
+month_partitioned,218.32,202,10,10,9315,1207366

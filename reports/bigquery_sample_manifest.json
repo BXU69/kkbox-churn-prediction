@@ -1,0 +1,31 @@
+{
+  "purpose": "BigQuery SQL migration exercise; not new model validation",
+  "cohort_source": "train_v2.csv",
+  "transaction_source": "transactions.csv",
+  "sampling": "10,000 lowest SHA256(salt + msno), tie-break by msno",
+  "sampling_salt": "kkbox-bigquery-v1:",
+  "full_cohort_users": 970960,
+  "sample_users": 10000,
+  "sample_churn_users": 910,
+  "window_start_inclusive": "2016-12-01",
+  "feature_cutoff_inclusive": "2017-02-28",
+  "source_transaction_rows_scanned": 21547746,
+  "sample_transaction_rows": 27094,
+  "sample_users_with_transactions": 9707,
+  "sample_users_without_transactions": 293,
+  "duplicates": "Preserved to match existing transaction feature SQL",
+  "cloud_execution_completed": true,
+  "files": {
+    "cohort_sample.csv": {
+      "bytes": 480015,
+      "sha256": "c8aa287eac19f34557d66f9d4a3af14b8bf075ea47bc578f1b9242d38d54e7a5"
+    },
+    "transactions_sample.csv": {
+      "bytes": 2199553,
+      "sha256": "f5158fc08bd9a214e35d49b8d727c9f549dc11c676230884490e18fc9e3c7e20"
+    }
+  },
+  "completed_scope": "Sample transaction SQL migration, feature parity, scan comparison, Python query, and aggregate Tableau dashboard",
+  "listening_features_migrated": false,
+  "tableau_public_url": "https://public.tableau.com/app/profile/becca.xu/viz/KKBoxChurnOverviewBigQueryTableau/KKBoxChurnOverview"
+}

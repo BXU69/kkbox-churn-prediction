@@ -1,0 +1,2 @@
+total_rows,unique_users,missing_user_ids,invalid_labels,churned_users,churn_rate_pct
+10000,10000,0,0,910,9.1

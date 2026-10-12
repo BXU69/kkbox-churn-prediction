@@ -1,0 +1,11 @@
+recency_segment,auto_renew_segment,users,churned_users,transaction_rows,churn_rate
+01_0-7 days,01_All auto-renew,2916,106,8688,0.036351
+01_0-7 days,02_Mixed auto-renew,24,2,81,0.083333
+01_0-7 days,03_No auto-renew,212,53,506,0.25
+02_8-30 days,01_All auto-renew,5688,186,15904,0.0327
+02_8-30 days,02_Mixed auto-renew,55,7,177,0.127273
+02_8-30 days,03_No auto-renew,619,187,1403,0.3021
+03_31-90 days,01_All auto-renew,100,63,169,0.63
+03_31-90 days,02_Mixed auto-renew,13,6,38,0.461538
+03_31-90 days,03_No auto-renew,80,49,128,0.6125
+04_No transactions,04_No transactions,293,251,0,0.856655

@@ -1,0 +1,14 @@
+{
+  "reference": "existing sql/transaction_features_90d.sql on sampled transactions",
+  "bigquery_export": "data/bigquery_upload/bigquery_user_transaction_features.csv",
+  "users": 10000,
+  "compared_columns": 8,
+  "feature_columns": 7,
+  "label_compared": true,
+  "all_passed": true,
+  "total_null_mismatches": 0,
+  "total_value_mismatches": 0,
+  "scope": "Parity for this sample only; not full-data or model validation",
+  "duckdb_version": "1.5.6",
+  "pandas_version": "3.0.6"
+}

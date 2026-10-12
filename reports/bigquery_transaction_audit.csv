@@ -1,0 +1,2 @@
+transaction_rows,users_with_transactions,first_transaction_date,last_transaction_date,invalid_transaction_dates,outside_window_rows,unmatched_transaction_rows
+27094,9707,2016-12-01,2017-02-28,0,0,0

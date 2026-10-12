@@ -1,6 +1,8 @@
 # KKBOX Customer Churn Prediction
 
-A portfolio project combining large-scale data auditing, SQL feature engineering, churn modeling, retention experiment design, and a PyTorch GRU benchmark.
+A portfolio project combining large-scale data auditing, SQL feature engineering, churn modeling, retention experiment design, a PyTorch GRU benchmark, and a sampled BigQuery-to-Tableau analytics workflow.
+
+[Explore the interactive Tableau dashboard](https://public.tableau.com/app/profile/becca.xu/viz/KKBoxChurnOverviewBigQueryTableau/KKBoxChurnOverview)
 
 ## Highlights
 
@@ -8,6 +10,20 @@ A portfolio project combining large-scale data auditing, SQL feature engineering
 - Extracted **24.0M daily activity records** and built **23 transaction and listening features**.
 - Compared Logistic Regression, XGBoost, LightGBM, and a GRU using historical training data and a later evaluation cohort.
 - Designed a randomized retention experiment with power analysis; no experiment was run.
+- Migrated seven transaction features to BigQuery for a deterministic **10,000-user sample**, verified parity with DuckDB, and queried the cloud results with Python.
+- Published an interactive Tableau Public dashboard showing observed churn by transaction recency and auto-renewal history, with linked filtering and user counts.
+
+## BigQuery and Tableau
+
+The cloud extension uses **10,000 users and 27,094 transaction records** from December 1, 2016 through February 28, 2017. It supplements the larger local modeling workflow; listening features and model training were not migrated to BigQuery.
+
+- **SQL migration:** All seven transaction features and the label matched DuckDB for every sampled user, including null patterns. Counts matched exactly; averages matched within a numerical tolerance of 1e-10.
+- **Partitioning:** Historical date partitions immediately expired under the sandbox's 60-day partition retention. The working table uses an integer month index for range partitioning, retains the original dates, and clusters by user ID.
+- **Scan comparison:** Equivalent January aggregate queries processed **635.02 KB** on the raw table and **218.32 KB** on the partitioned table, approximately **65.6% less data**. Single-run durations were 190 ms and 202 ms; both showed 10 MB billed. This does not demonstrate lower latency or billed bytes, and it does not isolate clustering benefits.
+- **Python:** The BigQuery client returned the expected summary with caching disabled and a 50 MiB query billing-data limit.
+- **Tableau:** The dashboard uses ten aggregate groups and calculates churn as `SUM(churned_users) / SUM(users)`. Select a bar in the first chart to filter the charts below.
+
+[Cloud reproduction guide](docs/bigquery_tableau.md) · [Feature parity report](reports/bigquery_feature_parity.csv) · [Scan comparison](reports/bigquery_scan_comparison.csv) · [Dashboard data](reports/tableau/kkbox_transaction_segments.csv)
 
 ## Model Results
 
@@ -94,6 +110,9 @@ Obtain the official data and follow [the reproduction guide](docs/reproduction.m
 
 - `notebooks/`: numbered analysis, modeling, and experiment-design stages
 - `sql/`: queries used by the notebooks
+- `sql/bigquery/`: cloud audit, partitioning, feature engineering, and dashboard queries
+- `scripts/`: sample preparation, SQL parity verification, and a BigQuery Python query
 - `reports/`: aggregate results, configurations, figures, and experiment plan
 - `docs/`: reproduction instructions
-- `requirements.txt`: recorded Python dependencies
+- `requirements.txt`: recorded local analysis dependencies
+- `requirements-bigquery.txt`: additional dependency for the optional cloud Python query

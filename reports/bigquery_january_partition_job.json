@@ -1,0 +1,14 @@
+{
+  "query_file": "sql/bigquery/09_january_partition_scan.sql",
+  "evidence": "User-provided result and job-information screenshots",
+  "transaction_rows": 9315,
+  "total_amount_paid": 1207366,
+  "auto_renew_share_displayed_prefix": "0.925174449812...",
+  "location": "US",
+  "duration_ms": 202,
+  "processed_bytes_display": "218.32 KB",
+  "billed_bytes_display": "10 MB",
+  "slot_ms": 10,
+  "cached_result": false,
+  "note": "Units copied as displayed. No clustering-column filter was used, so this exercise measures month partition pruning, not clustering benefits."
+}

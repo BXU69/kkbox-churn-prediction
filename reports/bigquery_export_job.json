@@ -1,0 +1,11 @@
+{
+  "query": "SELECT * FROM user_transaction_features ORDER BY msno",
+  "evidence": "User-provided BigQuery job information screenshot",
+  "execution_time_local": "2026-10-12T11:38:33-04:00",
+  "location": "US",
+  "duration_ms": 114,
+  "bytes_processed": 0,
+  "bytes_billed": 0,
+  "cache_hit": true,
+  "interpretation": "Cached execution; not an uncached scan benchmark"
+}

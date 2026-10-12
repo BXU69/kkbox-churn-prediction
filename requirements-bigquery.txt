@@ -1,0 +1,4 @@
+# Additional library for scripts/query_bigquery_summary.py.
+# Install in Cloud Shell or an authenticated local environment.
+# The exact version used in the interactive cloud session was not recorded.
+google-cloud-bigquery

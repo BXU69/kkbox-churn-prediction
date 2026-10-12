@@ -1,0 +1,9 @@
+{
+  "groups": 10,
+  "users": 10000,
+  "churned_users": 910,
+  "transaction_rows": 27094,
+  "count_columns_match_exactly": true,
+  "churn_rate_matches_within_absolute_tolerance": 1e-06,
+  "all_passed": true
+}

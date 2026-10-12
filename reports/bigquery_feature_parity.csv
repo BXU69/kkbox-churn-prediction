@@ -1,0 +1,9 @@
+column,compared_users,local_nulls,bigquery_nulls,null_mismatches,value_mismatches,max_absolute_difference,absolute_tolerance,relative_tolerance,passed
+is_churn,10000,0,0,0,0,0.0,0.0,0.0,True
+transaction_rows_90d,10000,0,0,0,0,0.0,0.0,0.0,True
+transaction_days_90d,10000,0,0,0,0,0.0,0.0,0.0,True
+cancel_rows_90d,10000,0,0,0,0,0.0,0.0,0.0,True
+auto_renew_share_90d,10000,293,293,0,0,1.1102230246251565e-16,1e-10,1e-10,True
+avg_plan_days_90d,10000,293,293,0,0,0.0,1e-10,1e-10,True
+days_since_last_transaction_90d,10000,293,293,0,0,0.0,0.0,0.0,True
+has_transaction_90d,10000,0,0,0,0,0.0,0.0,0.0,True
