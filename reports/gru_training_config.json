@@ -1,0 +1,48 @@
+{
+  "seed": 42,
+  "device": "mps",
+  "pytorch_version": "2.14.1",
+  "model": {
+    "sequence_channels": 9,
+    "static_features": 10,
+    "hidden_size": 32,
+    "dropout": 0.1,
+    "prior_probability": 0.09662667661905289
+  },
+  "sequence_channels": [
+    "log1p_num_25",
+    "log1p_num_50",
+    "log1p_num_75",
+    "log1p_num_985",
+    "log1p_num_100",
+    "log1p_num_unq",
+    "log1p_valid_seconds",
+    "log_present",
+    "duration_valid"
+  ],
+  "transaction_columns": [
+    "transaction_rows_90d",
+    "transaction_days_90d",
+    "cancel_rows_90d",
+    "auto_renew_share_90d",
+    "avg_plan_days_90d",
+    "days_since_last_transaction_90d",
+    "has_transaction_90d"
+  ],
+  "batch_size": 1024,
+  "learning_rate": 0.001,
+  "optimizer": "Adam",
+  "loss": "BCEWithLogitsLoss",
+  "gradient_clip_norm": 1.0,
+  "selection_max_epochs": 12,
+  "selection_patience": 3,
+  "selection_stop_reason": "maximum_epoch_budget",
+  "selected_epochs": 12,
+  "best_internal_log_loss": 0.13239094867458065,
+  "internal_training_users": 705701,
+  "internal_validation_users": 176426,
+  "final_training_users": 882127,
+  "final_preprocessing_fit_on": "all historical users",
+  "later_cohort_used_for_epoch_selection": false,
+  "independent_test_evaluation_completed": false
+}

@@ -1,0 +1,2 @@
+model,log_loss,roc_auc,average_precision
+GRU + transaction inputs,0.23979854773651102,0.8091337557290168,0.4702200693462157

@@ -1,0 +1,2 @@
+model,selected_users,selected_churned_users,precision_at_10pct,recall_at_10pct,lift_at_10pct,tie_break
+GRU + transaction inputs,97096,47199,0.4861065337398039,0.5404671934043284,5.404672039727618,stable sequence order; msno ascending

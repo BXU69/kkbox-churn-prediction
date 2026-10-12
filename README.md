@@ -297,6 +297,29 @@ Arrays are stored locally as memory-mapped NumPy files and excluded from Git. No
 
 See [the preparation notebook](notebooks/15_sequence_preparation.ipynb), [summary](reports/sequence_preparation_summary.csv), and [input configuration](reports/sequence_preparation_config.json).
 
+## PyTorch GRU Benchmark
+
+Built a GRU-based model using 30-day daily listening sequences and transaction inputs. Sequence masks distinguish missing log days from recorded days with invalid durations.
+
+Epoch selection used an internal historical split. The best internal validation Log Loss was 0.132391 at epoch 12. The run reached its predefined 12-epoch budget; patience-based early stopping did not trigger.
+
+The final model and preprocessing were refitted on all 882,127 historical users for 12 epochs, then evaluated on the same 970,960-user later cohort used for the classical models.
+
+| Model | Later Log Loss ↓ | ROC-AUC ↑ | Average Precision ↑ |
+|---|---:|---:|---:|
+| Logistic Regression | **0.207310** | **0.849893** | **0.550063** |
+| LightGBM | 0.225507 | 0.839498 | 0.494052 |
+| XGBoost | 0.230022 | 0.839235 | 0.489641 |
+| GRU + transaction inputs | 0.239799 | 0.809134 | 0.470220 |
+
+The GRU did not outperform the classical baselines in this evaluation. Strong internal historical performance did not carry over to the later cohort.
+
+The comparison uses matching cohorts, source data, and feature cutoffs, but different input representations. It does not isolate the effect of sequence order or architecture. Previously documented label-provenance and retrospective-evaluation limitations remain applicable.
+
+Logistic Regression is the strongest benchmark observed so far; deployment suitability and intervention effectiveness have not been established.
+
+See [the GRU notebook](notebooks/16_gru_model.ipynb), [training configuration](reports/gru_training_config.json), and [model comparison](reports/final_model_comparison.csv).
+
 ## Data
 
 Source: [WSDM — KKBOX's Churn Prediction Challenge](https://www.kaggle.com/competitions/kkbox-churn-prediction-challenge/data).
