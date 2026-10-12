@@ -15,4 +15,4 @@ See [the reproduction guide](bigquery_tableau.md) for the final workflow and evi
 [Published dashboard](https://public.tableau.com/app/profile/becca.xu/viz/KKBoxChurnOverviewBigQueryTableau/KKBoxChurnOverview)
 
 This is a transaction sample exercise. Listening SQL and model training were not
-migrated to BigQuery. Local changes have not been committed or pushed.
+migrated to BigQuery. The extension has been committed and pushed to GitHub.
