@@ -1,0 +1,71 @@
+{
+  "status": "retrospective prototype with simulated economics; no intervention delivered",
+  "sample_users": 750,
+  "sample_rule": "first 750 user IDs ordered by md5(msno), msno; no labels used",
+  "candidate_eligibility": "assumed; no consent or active subscription verification",
+  "value_units": "hypothetical monetary units, not actual currency or observed revenue",
+  "seed": 42,
+  "budgets": [
+    30,
+    60,
+    120,
+    200
+  ],
+  "costs": {
+    "reminder": 0.2,
+    "discount": 2.0
+  },
+  "capacities": [
+    150,
+    60
+  ],
+  "assumed_margin": "Lognormal(log(100), 0.4), clipped to [30,250]",
+  "assumed_relative_risk_reductions": {
+    "reminder": "(0.04 + 0.10 * recent_recorded_days / 7) * Uniform(0.8,1.2)",
+    "discount": "(0.10 + 0.20 * (1 - auto_renew_share)) * Uniform(0.8,1.2); missing share=0.5"
+  },
+  "uplift_formula": "predicted churn probability * assumed relative risk reduction * scenario multiplier, capped at baseline risk",
+  "scenario_multipliers": {
+    "weak": [
+      0.4,
+      0.3
+    ],
+    "base": [
+      1.0,
+      1.0
+    ],
+    "strong": [
+      1.4,
+      1.5
+    ]
+  },
+  "scenario_probabilities": "not specified; maximin robustness, not stochastic or multistage programming",
+  "random_baseline": "100 seeded random permutations of positive-base-value user/action pairs",
+  "prediction_quality": {
+    "historical_training_users": 882127,
+    "later_evaluation_users": 970960,
+    "later_log_loss": 0.20731011815003084,
+    "later_roc_auc": 0.8498934594251156,
+    "independent_test": false
+  },
+  "enumeration_checks": [
+    {
+      "robust": false,
+      "enumeration_optimum": 8.6,
+      "solver_optimum": 8.6
+    },
+    {
+      "robust": true,
+      "enumeration_optimum": 5.800000000000001,
+      "solver_optimum": 5.800000000000001
+    }
+  ],
+  "versions": {
+    "pyomo": "6.10.1",
+    "gurobi": [
+      13,
+      0,
+      3
+    ]
+  }
+}

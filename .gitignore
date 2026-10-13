@@ -220,6 +220,7 @@ __marimo__/
 .streamlit/secrets.toml
 
 # Local datasets and generated model files
+.optimization-deps/
 data/
 models/
 *.7z

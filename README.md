@@ -62,6 +62,18 @@ This association motivates testing personalized recommendations or re-engagement
 
 [Segment analysis](notebooks/13_retention_segments.ipynb) · [Risk targeting results](reports/risk_targeting_results.csv)
 
+## Retention Decision Optimization
+
+Extended churn prediction with a **Pyomo/Gurobi mixed-integer allocation prototype** on a deterministic 750-user sample, using simulated intervention effects and contribution margins. Compared risk-priority targeting, upgrade-aware value/cost greedy, and 100 random allocations across four budgets. Added single-stage maximin robustness over three intervention-effect scenarios.
+
+At a budget of 120 hypothetical units, nominal optimization produced **11.7% higher simulated expected net value than risk-priority targeting** and matched the upgrade-aware greedy strategy. Robust allocation improved the weakest modeled scenario's value by **5.9%** relative to nominal allocation. Neither result measures actual retention or real profit. All eight solver runs were optimal and checked for budget/capacity feasibility; small cases were independently verified by enumeration.
+
+![Retention allocation: base and worst-scenario simulated net value across budgets](reports/optimization/budget_sensitivity.png)
+
+Left: simulated expected net value under base assumptions. Right: net value in the weakest modeled scenario. Nominal MILP and upgrade-aware value/cost greedy overlap in these instances; all intervention economics are simulated.
+
+[Completed results notebook](notebooks/18_retention_optimization_results.ipynb) · [Model, assumptions, and reproduction](docs/retention_optimization.md) · [Strategy results](reports/optimization/strategy_summary.csv)
+
 ## Proposed Randomized Experiment
 
 The user-level 1:1 design specifies intention-to-treat analysis and a fixed renewal observation endpoint.
